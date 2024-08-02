@@ -12,16 +12,16 @@ import {
   SubInvitaNum,
 } from "../generated/AtDawnData/AtDawnData";
 import {
-  AtDawnData_AddBonus,
-  AtDawnData_AddCredit,
-  AtDawnData_AddExp,
-  AtDawnData_AddInvitaNum,
-  AtDawnData_Register,
-  AtDawnData_SetReferrer,
-  AtDawnData_SubBonus,
-  AtDawnData_SubCredit,
-  AtDawnData_SubExp,
-  AtDawnData_SubInvitaNum,
+  At_AddBonus,
+  At_AddCredit,
+  At_AddExp,
+  At_AddInvitaNum,
+  At_Register,
+  At_SetReferrer,
+  At_SubBonus,
+  At_SubCredit,
+  At_SubExp,
+  At_SubInvitaNum,
   UserStats,
 } from "../generated/schema";
 
@@ -51,7 +51,7 @@ function updateUserStats(
 }
 
 export function handleAddBonus(event: AddBonus): void {
-  let entity = new AtDawnData_AddBonus(
+  let entity = new At_AddBonus(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
   entity._user = event.params._user.toHexString();
@@ -69,7 +69,7 @@ export function handleAddBonus(event: AddBonus): void {
 }
 
 export function handleAddCredit(event: AddCredit): void {
-  let entity = new AtDawnData_AddCredit(
+  let entity = new At_AddCredit(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
   entity._user = event.params._user.toHexString();
@@ -87,7 +87,7 @@ export function handleAddCredit(event: AddCredit): void {
 }
 
 export function handleAddExp(event: AddExp): void {
-  let entity = new AtDawnData_AddExp(
+  let entity = new At_AddExp(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
   entity._user = event.params._user.toHexString();
@@ -105,7 +105,7 @@ export function handleAddExp(event: AddExp): void {
 }
 
 export function handleAddInvitaNum(event: AddInvitaNum): void {
-  let entity = new AtDawnData_AddInvitaNum(
+  let entity = new At_AddInvitaNum(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
   entity._user = event.params._user.toHexString();
@@ -123,7 +123,7 @@ export function handleAddInvitaNum(event: AddInvitaNum): void {
 }
 
 export function handleRegister(event: Register): void {
-  let entity = new AtDawnData_Register(
+  let entity = new At_Register(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
   entity.referrer = event.params.referrer.toHexString();
@@ -134,7 +134,7 @@ export function handleRegister(event: Register): void {
 }
 
 export function handleSetReferrer(event: SetReferrer): void {
-  let entity = new AtDawnData_SetReferrer(
+  let entity = new At_SetReferrer(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
   entity._user = event.params._user.toHexString();
@@ -145,7 +145,7 @@ export function handleSetReferrer(event: SetReferrer): void {
 }
 
 export function handleSubBonus(event: SubBonus): void {
-  let entity = new AtDawnData_SubBonus(
+  let entity = new At_SubBonus(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
   entity._user = event.params._user.toHexString();
@@ -163,7 +163,7 @@ export function handleSubBonus(event: SubBonus): void {
 }
 
 export function handleSubCredit(event: SubCredit): void {
-  let entity = new AtDawnData_SubCredit(
+  let entity = new At_SubCredit(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
   entity._user = event.params._user.toHexString();
@@ -181,7 +181,7 @@ export function handleSubCredit(event: SubCredit): void {
 }
 
 export function handleSubExp(event: SubExp): void {
-  let entity = new AtDawnData_SubExp(
+  let entity = new At_SubExp(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
   entity._user = event.params._user.toHexString();
@@ -199,7 +199,7 @@ export function handleSubExp(event: SubExp): void {
 }
 
 export function handleSubInvitaNum(event: SubInvitaNum): void {
-  let entity = new AtDawnData_SubInvitaNum(
+  let entity = new At_SubInvitaNum(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
   entity._user = event.params._user.toHexString();
@@ -212,6 +212,6 @@ export function handleSubInvitaNum(event: SubInvitaNum): void {
     BigInt.fromI32(0),
     BigInt.fromI32(0),
     BigInt.fromI32(0),
-    event.params._value.neg()
+    event.params._value.neg() //-event.params._value
   );
 }

@@ -7,7 +7,7 @@
     "create": "graph create --node http://localhost:8020/ kroma/atdawn-subgraph",
     "remove": "graph remove --node http://localhost:8020/ kroma/atdawn-subgraph",
     "deploy": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:8020 --version-label 2.0.0 kroma/atdawn-subgraph", 
-    "deploy_goldsky": "goldsky subgraph deploy atdawn-kroma/1.0.0",
+    "deploy_goldsky": "goldsky subgraph deploy atdawn-subgraph/1.0.0",
     "test": "graph test"
   },
   "dependencies": {

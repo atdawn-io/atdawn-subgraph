@@ -1,31 +1,30 @@
 specVersion: 0.0.5
 description: AtDawnData subgraph for tracking user stats
-repository: https://github.com/your-repo/ad_test
 schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: AtDawnData
-    network: mainnet
+    network: kroma
     source:
       address: "0x78925Ce372c918011Eb2966264b668B2F256224C"
       abi: AtDawnData
       startBlock: 12136274
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.6
+      apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - AtDawnData_AddBonus
-        - AtDawnData_AddCredit
-        - AtDawnData_AddExp
-        - AtDawnData_AddInvitaNum
-        - AtDawnData_Register
-        - AtDawnData_SetReferrer
-        - AtDawnData_SubBonus
-        - AtDawnData_SubCredit
-        - AtDawnData_SubExp
-        - AtDawnData_SubInvitaNum
+        - At_AddBonus
+        - At_AddCredit
+        - At_AddExp
+        - At_AddInvitaNum
+        - At_Register
+        - At_SetReferrer
+        - At_SubBonus
+        - At_SubCredit
+        - At_SubExp
+        - At_SubInvitaNum
         - UserStats
       abis:
         - name: AtDawnData
