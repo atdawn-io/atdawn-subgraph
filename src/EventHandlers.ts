@@ -6,7 +6,7 @@ import {
   AtDawnData_AddBonusEntity,
   AtDawnData_AddCreditEntity,
   AtDawnData_AddExpEntity,
-  AtDawnData_AddInvitaNumEntity, 
+  AtDawnData_AddInvitaNumEntity,
   AtDawnData_RegisterEntity,
   AtDawnData_SetReferrerEntity,
   AtDawnData_SubBonusEntity,
@@ -18,12 +18,14 @@ import {
 
 function updateUserStats(context, _user, bonusDelta, creditDelta, expDelta, invitaNumDelta) {
   let userStats = context.UserStats.findOne({ _user }) || {
+    id: _user,
     _user,
     totalBonus: BigInt(0),
     totalCredit: BigInt(0),
     totalExp: BigInt(0),
     totalInvitaNum: BigInt(0),
   };
+
 
   userStats.totalBonus += bonusDelta;
   userStats.totalCredit += creditDelta;
@@ -80,7 +82,7 @@ AtDawnDataContract.AddInvitaNum.handler(({ event, context }) => {
   context.AtDawnData_AddInvitaNum.set(entity);
   updateUserStats(context, event.params._user, BigInt(0), BigInt(0), BigInt(0), event.params._value);
 });
- 
+
 AtDawnDataContract.Register.handler(({ event, context }) => {
   const entity: AtDawnData_RegisterEntity = {
     id: `${event.transactionHash}_${event.logIndex}`,

@@ -69,9 +69,11 @@ type AtDawnData_SubInvitaNum {
 }
 
 type UserStats {
+  id: ID!
   _user: String!
   totalBonus: BigInt!
   totalCredit: BigInt!
   totalExp: BigInt!
   totalInvitaNum: BigInt!
 }
+
