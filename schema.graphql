@@ -1,0 +1,76 @@
+type AtDawnData_AddBonus {
+  id: ID!
+  _user: String!
+  _value: BigInt!
+  time: BigInt!
+}
+
+type AtDawnData_AddCredit {
+  id: ID!
+  _user: String!
+  _value: BigInt!
+  time: BigInt!
+}
+
+type AtDawnData_AddExp {
+  id: ID!
+  _user: String!
+  _value: BigInt!
+  time: BigInt!
+}
+
+type AtDawnData_AddInvitaNum {
+  id: ID!
+  _user: String!
+  _value: BigInt!
+  time: BigInt!
+}
+
+type AtDawnData_OwnershipTransferred {
+  id: ID!
+  previousOwner: String!
+  newOwner: String!
+}
+
+type AtDawnData_Register {
+  id: ID!
+  referrer: String!
+  code: String!
+  time: BigInt!
+}
+
+type AtDawnData_SetReferrer {
+  id: ID!
+  _user: String!
+  _referrer: String!
+  time: BigInt!
+}
+
+type AtDawnData_SubBonus {
+  id: ID!
+  _user: String!
+  _value: BigInt!
+  time: BigInt!
+}
+
+type AtDawnData_SubCredit {
+  id: ID!
+  _user: String!
+  _value: BigInt!
+  time: BigInt!
+}
+
+type AtDawnData_SubExp {
+  id: ID!
+  _user: String!
+  _value: BigInt!
+  time: BigInt!
+}
+
+type AtDawnData_SubInvitaNum {
+  id: ID!
+  _user: String!
+  _value: BigInt!
+  time: BigInt!
+}
+

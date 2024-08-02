@@ -1,0 +1,21 @@
+name: ad_test
+networks:
+- id: 255
+  start_block: 0
+  contracts:
+  - name: AtDawnData
+    address:
+    - 0x78925Ce372c918011Eb2966264b668B2F256224C
+    handler: src/EventHandlers.ts
+    events:
+    - event: AddBonus(address _user, uint256 _value, uint256 time)
+    - event: AddCredit(address _user, uint256 _value, uint256 time)
+    - event: AddExp(address _user, uint256 _value, uint256 time)
+    - event: AddInvitaNum(address _user, uint256 _value, uint256 time)
+    - event: OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+    - event: Register(address referrer, string code, uint256 time)
+    - event: SetReferrer(address _user, address _referrer, uint256 time)
+    - event: SubBonus(address _user, uint256 _value, uint256 time)
+    - event: SubCredit(address _user, uint256 _value, uint256 time)
+    - event: SubExp(address _user, uint256 _value, uint256 time)
+    - event: SubInvitaNum(address _user, uint256 _value, uint256 time)
