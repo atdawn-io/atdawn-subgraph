@@ -26,12 +26,6 @@ type AtDawnData_AddInvitaNum {
   time: BigInt!
 }
 
-type AtDawnData_OwnershipTransferred {
-  id: ID!
-  previousOwner: String!
-  newOwner: String!
-}
-
 type AtDawnData_Register {
   id: ID!
   referrer: String!
@@ -74,3 +68,10 @@ type AtDawnData_SubInvitaNum {
   time: BigInt!
 }
 
+type UserStats {
+  _user: String!
+  totalBonus: BigInt!
+  totalCredit: BigInt!
+  totalExp: BigInt!
+  totalInvitaNum: BigInt!
+}

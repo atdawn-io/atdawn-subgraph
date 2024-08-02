@@ -1,7 +1,7 @@
 name: ad_test
 networks:
 - id: 255
-  start_block: 0
+  start_block: 12136274
   contracts:
   - name: AtDawnData
     address:
@@ -11,8 +11,7 @@ networks:
     - event: AddBonus(address _user, uint256 _value, uint256 time)
     - event: AddCredit(address _user, uint256 _value, uint256 time)
     - event: AddExp(address _user, uint256 _value, uint256 time)
-    - event: AddInvitaNum(address _user, uint256 _value, uint256 time)
-    - event: OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+    - event: AddInvitaNum(address _user, uint256 _value, uint256 time) 
     - event: Register(address referrer, string code, uint256 time)
     - event: SetReferrer(address _user, address _referrer, uint256 time)
     - event: SubBonus(address _user, uint256 _value, uint256 time)

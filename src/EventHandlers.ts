@@ -6,15 +6,32 @@ import {
   AtDawnData_AddBonusEntity,
   AtDawnData_AddCreditEntity,
   AtDawnData_AddExpEntity,
-  AtDawnData_AddInvitaNumEntity,
-  AtDawnData_OwnershipTransferredEntity,
+  AtDawnData_AddInvitaNumEntity, 
   AtDawnData_RegisterEntity,
   AtDawnData_SetReferrerEntity,
   AtDawnData_SubBonusEntity,
   AtDawnData_SubCreditEntity,
   AtDawnData_SubExpEntity,
   AtDawnData_SubInvitaNumEntity,
+  UserStatsEntity,
 } from "generated";
+
+function updateUserStats(context, _user, bonusDelta, creditDelta, expDelta, invitaNumDelta) {
+  let userStats = context.UserStats.findOne({ _user }) || {
+    _user,
+    totalBonus: BigInt(0),
+    totalCredit: BigInt(0),
+    totalExp: BigInt(0),
+    totalInvitaNum: BigInt(0),
+  };
+
+  userStats.totalBonus += bonusDelta;
+  userStats.totalCredit += creditDelta;
+  userStats.totalExp += expDelta;
+  userStats.totalInvitaNum += invitaNumDelta;
+
+  context.UserStats.set(userStats);
+}
 
 AtDawnDataContract.AddBonus.handler(({ event, context }) => {
   const entity: AtDawnData_AddBonusEntity = {
@@ -25,6 +42,7 @@ AtDawnDataContract.AddBonus.handler(({ event, context }) => {
   };
 
   context.AtDawnData_AddBonus.set(entity);
+  updateUserStats(context, event.params._user, event.params._value, BigInt(0), BigInt(0), BigInt(0));
 });
 
 AtDawnDataContract.AddCredit.handler(({ event, context }) => {
@@ -36,6 +54,7 @@ AtDawnDataContract.AddCredit.handler(({ event, context }) => {
   };
 
   context.AtDawnData_AddCredit.set(entity);
+  updateUserStats(context, event.params._user, BigInt(0), event.params._value, BigInt(0), BigInt(0));
 });
 
 AtDawnDataContract.AddExp.handler(({ event, context }) => {
@@ -47,6 +66,7 @@ AtDawnDataContract.AddExp.handler(({ event, context }) => {
   };
 
   context.AtDawnData_AddExp.set(entity);
+  updateUserStats(context, event.params._user, BigInt(0), BigInt(0), event.params._value, BigInt(0));
 });
 
 AtDawnDataContract.AddInvitaNum.handler(({ event, context }) => {
@@ -58,18 +78,9 @@ AtDawnDataContract.AddInvitaNum.handler(({ event, context }) => {
   };
 
   context.AtDawnData_AddInvitaNum.set(entity);
+  updateUserStats(context, event.params._user, BigInt(0), BigInt(0), BigInt(0), event.params._value);
 });
-
-AtDawnDataContract.OwnershipTransferred.handler(({ event, context }) => {
-  const entity: AtDawnData_OwnershipTransferredEntity = {
-    id: `${event.transactionHash}_${event.logIndex}`,
-    previousOwner: event.params.previousOwner,
-    newOwner: event.params.newOwner,
-  };
-
-  context.AtDawnData_OwnershipTransferred.set(entity);
-});
-
+ 
 AtDawnDataContract.Register.handler(({ event, context }) => {
   const entity: AtDawnData_RegisterEntity = {
     id: `${event.transactionHash}_${event.logIndex}`,
@@ -101,6 +112,7 @@ AtDawnDataContract.SubBonus.handler(({ event, context }) => {
   };
 
   context.AtDawnData_SubBonus.set(entity);
+  updateUserStats(context, event.params._user, -event.params._value, BigInt(0), BigInt(0), BigInt(0));
 });
 
 AtDawnDataContract.SubCredit.handler(({ event, context }) => {
@@ -112,6 +124,7 @@ AtDawnDataContract.SubCredit.handler(({ event, context }) => {
   };
 
   context.AtDawnData_SubCredit.set(entity);
+  updateUserStats(context, event.params._user, BigInt(0), -event.params._value, BigInt(0), BigInt(0));
 });
 
 AtDawnDataContract.SubExp.handler(({ event, context }) => {
@@ -123,6 +136,7 @@ AtDawnDataContract.SubExp.handler(({ event, context }) => {
   };
 
   context.AtDawnData_SubExp.set(entity);
+  updateUserStats(context, event.params._user, BigInt(0), BigInt(0), -event.params._value, BigInt(0));
 });
 
 AtDawnDataContract.SubInvitaNum.handler(({ event, context }) => {
@@ -134,4 +148,5 @@ AtDawnDataContract.SubInvitaNum.handler(({ event, context }) => {
   };
 
   context.AtDawnData_SubInvitaNum.set(entity);
+  updateUserStats(context, event.params._user, BigInt(0), BigInt(0), BigInt(0), -event.params._value);
 });
