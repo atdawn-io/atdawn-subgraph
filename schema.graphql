@@ -1,74 +1,74 @@
-type AtDawnData_AddBonus {
+type AtDawnData_AddBonus @entity {
   id: ID!
   _user: String!
   _value: BigInt!
   time: BigInt!
 }
 
-type AtDawnData_AddCredit {
+type AtDawnData_AddCredit @entity {
   id: ID!
   _user: String!
   _value: BigInt!
   time: BigInt!
 }
 
-type AtDawnData_AddExp {
+type AtDawnData_AddExp @entity {
   id: ID!
   _user: String!
   _value: BigInt!
   time: BigInt!
 }
 
-type AtDawnData_AddInvitaNum {
+type AtDawnData_AddInvitaNum @entity {
   id: ID!
   _user: String!
   _value: BigInt!
   time: BigInt!
 }
 
-type AtDawnData_Register {
+type AtDawnData_Register @entity {
   id: ID!
   referrer: String!
   code: String!
   time: BigInt!
 }
 
-type AtDawnData_SetReferrer {
+type AtDawnData_SetReferrer @entity {
   id: ID!
   _user: String!
   _referrer: String!
   time: BigInt!
 }
 
-type AtDawnData_SubBonus {
+type AtDawnData_SubBonus @entity {
   id: ID!
   _user: String!
   _value: BigInt!
   time: BigInt!
 }
 
-type AtDawnData_SubCredit {
+type AtDawnData_SubCredit @entity {
   id: ID!
   _user: String!
   _value: BigInt!
   time: BigInt!
 }
 
-type AtDawnData_SubExp {
+type AtDawnData_SubExp @entity {
   id: ID!
   _user: String!
   _value: BigInt!
   time: BigInt!
 }
 
-type AtDawnData_SubInvitaNum {
+type AtDawnData_SubInvitaNum @entity {
   id: ID!
   _user: String!
   _value: BigInt!
   time: BigInt!
 }
 
-type UserStats {
+type UserStats @entity {
   id: ID!
   _user: String!
   totalBonus: BigInt!
@@ -76,4 +76,3 @@ type UserStats {
   totalExp: BigInt!
   totalInvitaNum: BigInt!
 }
-
